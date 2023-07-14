@@ -27,10 +27,16 @@ export default class Room {
             if(child.name === "water"){
                 child.material = new THREE.MeshPhysicalMaterial();
                 child.material.roughness = 0;
-                child.material.color.set(0xffffff);
+                child.material.color.set(0x549dd2);
                 child.material.ior = 3;
                 child.material.transmission = 1;
                 child.material.opacity = 1;
+            }
+
+            if(child.name === "screen"){
+                child.material = new THREE.MeshBasicMaterial({
+                    map: this.resources.items.screen,
+                })
             }
         });
 
