@@ -32,7 +32,7 @@ export default class Renderer {
     }
 
     resize(){
-        this.renderer.setSize(0, 0, this.sizes.width, this.sizes.height);
+        this.renderer.setSize(this.sizes.width, this.sizes.height);
         this.renderer.setPixelRatio(this.sizes.pixelRatio);
     }
 
