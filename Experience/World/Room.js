@@ -6,14 +6,16 @@ export default class Room {
         this.experience = new Experience();
         this.scene = this.experience.scene;
         this.resources = this.experience.resources;
+        this.time = this.experience.time;
         this.room = this.resources.items.room
-        this.acturalRoom = this.room.scene;
+        this.actualRoom = this.room.scene;
       
         this.setModel();
+        this.setAnimation();
     }
 
     setModel(){
-        this.acturalRoom.children.forEach(child => {
+        this.actualRoom.children.forEach(child => {
             child.castShadow = true;
             child.receiveShadow = true;
 
@@ -38,11 +40,20 @@ export default class Room {
                     map: this.resources.items.screen,
                 })
             }
+
+            
         });
 
-        this.scene.add(this.acturalRoom);
-        this.acturalRoom.scale.set(0.11, 0.11, 0.11);
+        this.scene.add(this.actualRoom);
+        this.actualRoom.scale.set(0.11, 0.11, 0.11);
         // this.acturalRoom.rotation.y = Math.PI
+    }
+
+    setAnimation(){
+        this.mixer = new THREE.AnimationMixer(this.actualRoom);
+        console.log(this.room)
+        this.swim = this.mixer.clipAction(this.room.animations[60])
+        this.swim.play();
     }
 
 
@@ -51,6 +62,6 @@ export default class Room {
     }
 
     update(){
-        
+        this.mixer.update(this.time.delta * 0.0009);
     }
 }
