@@ -6,8 +6,15 @@
 }
 
 html, body{
-  font-family: "Montserrat", sans-serif;
-  color: var(--text-black)
+  font-family: "Montserrat", sans-serif;  
+}
+
+h1,
+section,
+p,
+span,
+svg{
+  transition: background-color 0.5s, color 0.5s;
 }
 
 :root{
@@ -55,6 +62,10 @@ html, body{
   height: 100%;
 }
 
+.hidden{
+  display: none;
+}
+
 /* Page Itself --------------------------------- */
 .page{
   z-index: 99999;
@@ -84,6 +95,7 @@ html, body{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  color:var(--color-text)
 }
 
 .toggle-button{
@@ -94,7 +106,7 @@ html, body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-pink-light);
+  background-color: var(--color-pink);
   border-radius: 999px;
   margin: 0px 16px;
   border: none;
@@ -107,7 +119,7 @@ html, body{
   border-radius: 50%;
   width: 20px;
   height: 20px;
-  background-color: var(--color-background-light);
+  background-color: var(--color-background);
   transition: all 0.2s ease-in-out;
 }
 
@@ -116,7 +128,7 @@ html, body{
 }
 
 .slide{
-  left: 28px;
+  left: 31px;
 }
 
 /* Section Formatting --------------------------------- */
@@ -126,10 +138,11 @@ html, body{
 }
 
 .section{
+  position: relative;
   width: 50%;
   padding: 1000px 4%;
   margin: 0;
-  background-color: var(--color-background-light);
+  background-color: var(--color-background);
   overflow: hidden;
 }
 
@@ -192,12 +205,14 @@ html, body{
   font-weight: 700;
   line-height: 1.8;
   margin-top: 64px;
+  color: var(--color-text);
 }
 
 .section-text{
   line-height: 2;
   margin-top: 18px;
   font-size: 16px;
+  color: var(--color-text);
 }
 
 /* Fancy Decoration Part of Section --------------------------------- */
@@ -215,6 +230,7 @@ html, body{
   transform: skewY(25deg);
   z-index: 5;
   text-transform: uppercase;
+  color: var(--color-pink);
 }
 
 .styleOne,
@@ -271,25 +287,30 @@ html, body{
   position: absolute;
   bottom: 168px;
   left: 0;
+  color: var(--color-text);
 }
 
 .hero-second{
   position: absolute;
   top: calc(50% - 120px);
   right: 0;
+  color: var(--color-text);
 }
 
 .hero-main-title{
   font-size: 64px;
+  color: var(--color-text);
 }
 
 .hero-main-description{
   font-size: 18px;
+  color: var(--color-text);
 }
 
 .hero-second-subheading{
   font-size: 32px;
   text-transform: uppercase;
+  color: var(--color-text);
 }
 
 
@@ -301,7 +322,7 @@ html, body{
 }
 
 .blue-border{
-  color: var(--color-blue)
+  border-color:  var(--color-blue)
 }
 
 .blue-background{
@@ -313,7 +334,7 @@ html, body{
 }
 
 .green-border{
-  color: var(--color-green)
+  border-color: var(--color-green)
 }
 
 .green-background{
