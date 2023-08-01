@@ -49,7 +49,7 @@ export default class Controls {
                     x: () => {
                         return this.sizes.width * 0.0014;
                     },
-                })
+                });
 
                 // Second-section ------------------------
                 this.secondMoveTimeline = new GSAP.timeline({
@@ -101,6 +101,21 @@ export default class Controls {
                 //     width: 0.5 * 4,
                 //     height: 0.7 * 4,
                 //  }, "same")
+                // Third-section ------------------------
+                this.ThirdMoveTimeline = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".third-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    } 
+                })
+                .to(
+                    this.camera.orthographicCamera.position, {
+                    y: 0.5,
+                    x: -3.1,
+                })
             },
 
             "(max-width: 968px)": () => {
