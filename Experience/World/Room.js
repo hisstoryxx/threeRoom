@@ -53,6 +53,22 @@ export default class Room {
                 })
             }
 
+            if(child.name === "MiniFloor"){
+                child.position.x = 0.041317;
+                child.position.z = -6.63318;
+            }
+
+            if(
+                child.name === "Mailbox" ||
+                child.name === "Lamp" ||
+                child.name === "FloorFirst" ||
+                child.name === "FloorSecond" ||
+                child.name === "FloorThird" ||
+                child.name === "Dirt" ||
+                child.name === "FlowerOne"
+            ){
+                child.scale.set(0, 0, 0);
+            }
             
         });
 
