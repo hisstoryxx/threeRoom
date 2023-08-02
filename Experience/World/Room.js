@@ -9,8 +9,9 @@ export default class Room {
         this.scene = this.experience.scene;
         this.resources = this.experience.resources;
         this.time = this.experience.time;
-        this.room = this.resources.items.room
+        this.room = this.resources.items.room;
         this.actualRoom = this.room.scene;
+        this.roomChildren = {};
 
         this.lerp = {
             current: 0,
@@ -58,17 +59,26 @@ export default class Room {
                 child.position.z = -6.63318;
             }
 
-            if(
-                child.name === "Mailbox" ||
-                child.name === "Lamp" ||
-                child.name === "FloorFirst" ||
-                child.name === "FloorSecond" ||
-                child.name === "FloorThird" ||
-                child.name === "Dirt" ||
-                child.name === "FlowerOne"
-            ){
-                child.scale.set(0, 0, 0);
+            // if(
+            //     child.name === "Mailbox" ||
+            //     child.name === "Lamp" ||
+            //     child.name === "FloorFirst" ||
+            //     child.name === "FloorSecond" ||
+            //     child.name === "FloorThird" ||
+            //     child.name === "Dirt" ||
+            //     child.name === "FlowerOne"
+            // ){
+            //     child.scale.set(0, 0, 0);
+            // }
+
+            child.scale.set(0, 0, 0);
+            if(child.name === "Cube"){
+                //child.scale.set(1,1,1);
+                child.position.set(0, -1.5, 0);
+                child.rotation.y = Math.PI / 4;
             }
+
+            this.roomChildren[child.name.toLowerCase()] = child;
             
         });
 
@@ -80,7 +90,9 @@ export default class Room {
         rectLight.rotation.x = -Math.PI / 2;
         rectLight.rotation.z = -Math.PI / 4;
         //rectLight.lookAt( 0, 0, 0 );
-        this.actualRoom.add( rectLight )
+        this.actualRoom.add( rectLight );
+
+        this.roomChildren['rectLight'] = rectLight;
 
         //const rectLightHelper = new RectAreaLightHelper( rectLight );
         //rectLight.add( rectLightHelper );
