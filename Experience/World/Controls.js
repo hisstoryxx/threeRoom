@@ -18,7 +18,10 @@ export default class Controls {
             if(child.type == "RectAreaLight"){
                 this.rectLight = child;
             }
-        })
+        });
+        this.circleFirst = this.experience.world.floor.circleFirst;
+        this.circleSecond = this.experience.world.floor.circleSecond;
+        this.circleThird = this.experience.world.floor.circleThird;
 
         GSAP.registerPlugin(ScrollTrigger);
  
@@ -290,6 +293,56 @@ export default class Controls {
                         }
                     })
                 })
+
+                // All animations
+                  // First-section ------------------------
+                  this.firstMoveTimeline = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".first-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    } 
+                }).to(this.circleFirst.scale, {
+                    x: 3,
+                    y: 3,
+                    z: 3,
+                })
+               
+
+                // Second-section ------------------------
+                this.secondMoveTimeline = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".second-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    } 
+                },).to(this.circleSecond.scale, {
+                    x: 3,
+                    y: 3,
+                    z: 3,
+                }, "same").to(this.room.position,{
+                    y: 0.7,
+                }, "same")
+                
+                // Third-section ------------------------
+                this.ThirdMoveTimeline = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".third-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    } 
+                }).to(this.circleThird.scale, {
+                    x: 3,
+                    y: 3,
+                    z: 3,
+                })
+               
                 
                 // Mini Platform Animations
                 // console.log(this.room.children)
